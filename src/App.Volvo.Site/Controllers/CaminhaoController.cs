@@ -17,23 +17,24 @@ namespace App.Volvo.Site.Controllers
 
         //Camada de repositorio para fazer leituras simples e trazer dados para a apresentação
         private readonly ICaminhaoRepository _caminhaoRepository;
-        private readonly IModeloRepository _modeloRepository;
+        private readonly IModeloService _modeloService;
         private readonly IMapper _mapper;
 
-        public CaminhaoController(ICaminhaoService caminhaoService, ICaminhaoRepository caminhaoRepository, 
-                                  IModeloRepository modeloRepository, IMapper mapper, 
+        public CaminhaoController(ICaminhaoService caminhaoService, 
+                                  ICaminhaoRepository caminhaoRepository, 
+                                  IModeloService modeloService, 
+                                  IMapper mapper, 
                                   INotifier notifier) : base(notifier)
         {
             _caminhaoService = caminhaoService;
             _caminhaoRepository = caminhaoRepository;
-            _modeloRepository = modeloRepository;
+            _modeloService = modeloService;
             _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            var caminhoes = await _caminhaoRepository.GetAll();
-
+            var caminhoes = await _caminhaoRepository.GetCaminhoesModelo();
             var caminhoesViewModel = _mapper.Map<IEnumerable<CaminhaoViewModel>>(caminhoes);
 
             return View(caminhoesViewModel);
@@ -150,7 +151,7 @@ namespace App.Volvo.Site.Controllers
 
         private async Task<CaminhaoViewModel> PopularModelos(CaminhaoViewModel caminhaoViewModel)
         {
-            var modelos = await _modeloRepository.GetAll();
+            var modelos = await _modeloService.GetModelosPermitidoCadastro();
             caminhaoViewModel.Modelos = _mapper.Map<IEnumerable<ModeloViewModel>>(modelos);
             return caminhaoViewModel;
         }

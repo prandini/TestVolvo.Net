@@ -8,13 +8,19 @@
 
 <hr />
 <div class="row">
+
+    <div class="col-md-12">
+        <vc:summary></vc:summary>
+    </div>
+
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="ModeloId" class="control-label"></label>
-                <select asp-for="ModeloId" class="form-control" asp-items="ViewBag.ModeloId"></select>
+                <select asp-for="ModeloId" class="form-control" asp-items="@(new SelectList(Model.Modelos, "Id", "Nome"))"></select>
                 <span asp-validation-for="ModeloId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,6 +32,11 @@
                 <label asp-for="AnoModelo" class="control-label"></label>
                 <input asp-for="AnoModelo" class="form-control" />
                 <span asp-validation-for="AnoModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chassi" class="control-label"></label>
+                <input asp-for="Chassi" class="form-control" />
+                <span asp-validation-for="Chassi" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" />

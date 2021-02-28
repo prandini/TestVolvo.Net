@@ -21,7 +21,6 @@ namespace App.Volvo.Site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppVolvoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppVolvo")));
-            //services.AddDbContext<TempDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppVolvo")));
 
             services.AddControllersWithViews();
 

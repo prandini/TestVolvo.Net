@@ -23,5 +23,12 @@ namespace App.Volvo.Data.Repository
                 .Include(p => p.Modelo)
                 .FirstOrDefaultAsync(c => c.Id == Id);
         }
+
+        public async Task<IEnumerable<Caminhao>> GetCaminhoesModelo()
+        {
+            return await dbContext.Caminhoes
+                .AsNoTracking().Include(p => p.Modelo)
+                .ToListAsync();
+        }
     }
 }

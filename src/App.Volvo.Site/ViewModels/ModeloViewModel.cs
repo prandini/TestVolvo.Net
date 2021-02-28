@@ -10,9 +10,12 @@ namespace App.Volvo.Site.ViewModels
         [Key]
         public Guid Id { get; set; }
 
-        [DisplayName("Nome")]
+        [DisplayName("Modelo")]
         [Required(ErrorMessage ="O campo Nome é Obrigatório")]
         public string Nome { get; set; }
+
+        [DisplayName("Permitido Cadastro")]
+        public bool IsPermitidoCadastro { get; set; }
 
         public IEnumerable<CaminhaoViewModel> Caminhoes { get; set; }
     }

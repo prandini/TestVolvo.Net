@@ -4,6 +4,8 @@ using App.Volvo.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace App.Volvo.Data.Repository
@@ -58,6 +60,11 @@ namespace App.Volvo.Data.Repository
         public void Dispose()
         {
             dbContext?.Dispose();
+        }
+
+        public async Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
     }
 }

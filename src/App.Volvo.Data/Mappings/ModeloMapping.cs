@@ -13,6 +13,9 @@ namespace App.Volvo.Data.Mappings
             builder.Property(p => p.Nome)
                 .IsRequired()
                 .HasColumnType("varchar(10)");
+
+            builder.Property(p => p.IsPermitidoCadastro)
+                .HasColumnType("bit");
         }
     }
 }

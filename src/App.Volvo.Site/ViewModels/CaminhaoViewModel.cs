@@ -25,6 +25,9 @@ namespace App.Volvo.Site.ViewModels
         [DisplayName("Ano Modelo")]
         [Required(ErrorMessage = "O campo Ano M odelo é Obrigatório")]
         public short AnoModelo { get; set; }
-        public IEnumerable<ModeloViewModel> Modelos { get; internal set; }
+
+        public string Chassi { get; set; }
+
+        public IEnumerable<ModeloViewModel> Modelos { get; set; }
     }
 }

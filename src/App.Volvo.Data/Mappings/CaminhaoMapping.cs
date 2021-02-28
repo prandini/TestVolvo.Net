@@ -10,6 +10,10 @@ namespace App.Volvo.Data.Mappings
         {
             builder.HasKey(p => p.Id);
 
+            builder.Property(p => p.Chassi)
+                .IsRequired()
+                .HasColumnType("varchar(17)");
+
             builder.Property(p => p.AnoFabricacao)
                 .IsRequired()
                 .HasColumnType("smallint");

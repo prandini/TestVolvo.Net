@@ -9,8 +9,9 @@ namespace App.Volvo.Business.Models.Validations
     {
         public CaminhaoValidation()
         {
-            //RuleFor(c => c.Modelo)
-            //    .NotNull().WithMessage("O Campo {PropertyName} precisa ser selecionado");
+            RuleFor(c => c.Chassi)
+                .NotEmpty().WithMessage("O Campo {PropertyName} Precisa ser preenchido")
+                .Length(17).WithMessage("O Campo {PropertyName} Precisa conter 17 caracteres");
 
             RuleFor(c => c.AnoFabricacao)
                 .NotEmpty().WithMessage("O Campo {PropertyName} Precisa ser preenchido")

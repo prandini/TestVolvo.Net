@@ -1,5 +1,6 @@
 ﻿using App.Volvo.Business.Interfaces;
 using App.Volvo.Business.Models;
+using App.Volvo.Business.Models.Validations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,24 +17,41 @@ namespace App.Volvo.Business.Services
             _modeloRepository = modeloRepository;
         }
 
-        public Task Delete(Guid Id)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            await _modeloRepository.Delete(Id);
         }
 
-        public Task Insert(Modelo caminhao)
+        public async Task Insert(Modelo modelo)
         {
-            throw new NotImplementedException();
+            var IsNotexecutedValidation = ExecuteValidation(new ModeloValidation(), modelo) == false;
+            if (IsNotexecutedValidation)
+            {
+                return;
+            }
+
+            await _modeloRepository.Insert(modelo);
         }
 
-        public Task Update(Modelo caminhao)
+        public async Task Update(Modelo modelo)
         {
-            throw new NotImplementedException();
+            var IsNotexecutedValidation = ExecuteValidation(new ModeloValidation(), modelo) == false;
+            if (IsNotexecutedValidation)
+            {
+                return;
+            }
+
+            await _modeloRepository.Update(modelo);
         }
 
         public void Dispose()
         {
             _modeloRepository.Dispose();
+        }
+
+        public async Task<IEnumerable<Modelo>> GetModelosPermitidoCadastro()
+        {
+            return await _modeloRepository.Search(s => s.IsPermitidoCadastro);
         }
     }
 }

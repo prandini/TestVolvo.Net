@@ -1,4 +1,4 @@
-﻿//using App.Volvo.Business.Models;
+﻿using microblogAPI.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Volvo.Data.Context
@@ -16,6 +16,7 @@ namespace App.Volvo.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppVolvoDbContext).Assembly);
+            modelBuilder.Seed();
 
             base.OnModelCreating(modelBuilder);
         }

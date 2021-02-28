@@ -31,6 +31,10 @@ namespace App.Volvo.Data.Migrations
                     b.Property<short>("AnoModelo")
                         .HasColumnType("smallint");
 
+                    b.Property<string>("Chassi")
+                        .IsRequired()
+                        .HasColumnType("varchar(17)");
+
                     b.Property<Guid>("ModeloId")
                         .HasColumnType("uniqueidentifier");
 
@@ -39,6 +43,16 @@ namespace App.Volvo.Data.Migrations
                     b.HasIndex("ModeloId");
 
                     b.ToTable("Caminhoes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("922e05b8-fb2f-4c41-8e7a-0b09a6d07a2f"),
+                            AnoFabricacao = (short)2021,
+                            AnoModelo = (short)2021,
+                            Chassi = "398A4ch95b9PX8897",
+                            ModeloId = new Guid("c2482af3-101e-4e7f-9db0-727169994fb3")
+                        });
                 });
 
             modelBuilder.Entity("App.Volvo.Business.Models.Modelo", b =>
@@ -47,6 +61,9 @@ namespace App.Volvo.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsPermitidoCadastro")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(10)");
@@ -54,6 +71,32 @@ namespace App.Volvo.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Modelos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c2482af3-101e-4e7f-9db0-727169994fb3"),
+                            IsPermitidoCadastro = true,
+                            Nome = "FH"
+                        },
+                        new
+                        {
+                            Id = new Guid("f67b0e15-68f9-4528-b546-de09d0034bef"),
+                            IsPermitidoCadastro = true,
+                            Nome = "FM"
+                        },
+                        new
+                        {
+                            Id = new Guid("d6f57506-96b4-4422-946e-5bdf2103ee2a"),
+                            IsPermitidoCadastro = false,
+                            Nome = "FMX"
+                        },
+                        new
+                        {
+                            Id = new Guid("03b7333a-3aa0-48c3-85d5-a72279cde5d5"),
+                            IsPermitidoCadastro = false,
+                            Nome = "FHX"
+                        });
                 });
 
             modelBuilder.Entity("App.Volvo.Business.Models.Caminhao", b =>
