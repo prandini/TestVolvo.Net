@@ -1,8 +1,13 @@
 # TestVolvo.Net
 
-## Instruções
 
-###Banco de Dados
+## Banco de Dados
+Foi Utilizado "Microsoft SQL Server Express LocalDB"
+
+caso não tenha instalado, alterar a Connection String no arquivo "appsettings.json"
+
+
+## Instruções
 
 Abrir a solution com o visual studio e rodar o projeto "App.Volvo.Site"
 
