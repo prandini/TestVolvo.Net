@@ -46,10 +46,22 @@ namespace App.Volvo.Data.Repository
         public virtual async Task Delete(Guid id)
         {
             var entity = new TEntity { Id = id };
+            //var entity = await DbSet.AsNoTracking().FirstAsync(w => w.Id == id);
+
+            DetachLocal(d => d.Id == entity.Id);
 
             DbSet.Remove(entity);
 
             await SaveChanges();
+        }
+
+        public virtual void DetachLocal(Func<TEntity, bool> predicate)
+        {
+            var local = DbSet.Local.Where(predicate).FirstOrDefault();
+            if(local != null)
+            {
+                dbContext.Entry(local).State = EntityState.Detached;
+            }
         }
 
         public async Task<int> SaveChanges()
