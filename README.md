@@ -1,8 +1,8 @@
 # TestVolvo.Net
 
-Aplicação foi feita com ASP.Net Core 5
-
 ## Instruções
+
+###Banco de Dados
 
 Abrir a solution com o visual studio e rodar o projeto "App.Volvo.Site"
 
