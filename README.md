@@ -22,7 +22,13 @@ https://localhost:5001
 
 ## Code Coverage
 
-Há um relatório gerado sobre o code coverage na pasta
+Para gerar o o code coverage utilizei a ferramente Coverlet
+```
+https://github.com/coverlet-coverage/coverlet
+```
+
+
+Há um relatório pronto sobre o code coverage na pasta
 ```
 ~\coveragereport\index.html
 ```
