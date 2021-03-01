@@ -47,7 +47,7 @@ dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 O resultado será parecido com isso:
 
 ```
-  Generating report 'D:\Projects\Volvo\AppVolvo\test\App.Volvo.Business.Test\coverage.cobertura.xml'
+  Generating report '~\test\App.Volvo.Business.Test\coverage.cobertura.xml'
 
 +--------------------+--------+--------+--------+
 | Module             | Line   | Branch | Method |
@@ -67,7 +67,7 @@ O resultado será parecido com isso:
 
 Repare que foi gerado um arquivo XML
 ``
-\test\App.Volvo.Business.Test\coverage.cobertura.xml
+~\test\App.Volvo.Business.Test\coverage.cobertura.xml
 ``
 
 Com este arquivo podemos gerar o relatorio rodando o seguinte comando
